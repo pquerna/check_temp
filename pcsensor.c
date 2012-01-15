@@ -4,10 +4,6 @@
  * based on Temper.c by Robert Kavaler (c) 2009 (relavak.com)
  * All rights reserved.
  *
- * Temper driver for linux. This program can be compiled either as a library
- * or as a standalone program (-DUNIT_TEST). The driver will work with some
- * TEMPer usb devices from RDing (www.PCsensor.com).
- *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
  *     * Redistributions of source code must retain the above copyright
@@ -26,27 +22,19 @@
  * 
  */
 
-
-
-#include <usb.h>
-#include <stdio.h>
-
-#include <string.h>
-#include <errno.h>
-#include <float.h>
- 
+#include "pcsensor.h"
  
 #define INTERFACE1 (0x00)
 #define INTERFACE2 (0x01)
 #define SUPPORTED_DEVICES (2)
- 
+
 const static unsigned short vendor_id[] = { 
-0x1130,
-0x0c45
+	0x1130,
+	0x0c45
 };
 const static unsigned short product_id[] = { 
-0x660c,
-0x7401
+	0x660c,
+	0x7401
 };
 
 const static char uTemperatura[] = { 0x01, 0x80, 0x33, 0x01, 0x00, 0x00, 0x00, 0x00 };
@@ -69,10 +57,10 @@ static int device_type(usb_dev_handle *lvr_winusb){
 	int i;
 	dev = usb_device(lvr_winusb);
 	for(i =0;i < SUPPORTED_DEVICES;i++){
-			if (dev->descriptor.idVendor == vendor_id[i] && 
-				dev->descriptor.idProduct == product_id[i] ) {
-				return i;
-			}
+		if (dev->descriptor.idVendor == vendor_id[i] && 
+			dev->descriptor.idProduct == product_id[i] ) {
+			return i;
+		}
 	}
 	return -1;
 }
@@ -375,15 +363,3 @@ float pcsensor_get_temperature(usb_dev_handle* lvr_winusb){
 	return tempc;
 }
 
-#ifdef UNIT_TEST
-
-int main(){
-	usb_dev_handle* lvr_winusb = pcsensor_open();
-	if(!lvr_winusb) return -1;
-	float tempc = pcsensor_get_temperature(lvr_winusb);
-	pcsensor_close(lvr_winusb);
-	printf("tempc=%f\n", tempc);
-	return 0;
-}
-
-#endif

@@ -2,11 +2,11 @@ A command line sensor logger for Temper1 devices
 
 Uses pcsensor.c by Michitaka Ohno, Juan Carlos Perez and Robert Kavaler
 
-Install intructions:
+Install intructions (Debian / Ubuntu)
 
-1. Install libusb-0.1.4 and dev package: 
+1. Install libusb-0.1.4 and dev package, plus build-essential 
 
-    sudo apt-get install libusb-0.1.4 libusb-0.1.4-dev
+    sudo apt-get install build-essential libusb-0.1.4 libusb-0.1.4-dev
 
 2. Compile:
 

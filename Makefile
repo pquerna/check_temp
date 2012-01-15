@@ -8,7 +8,7 @@ temper:
 	$(CC) $(CFLAGS) temper.c pcsensor.c -o temper -lusb
 
 clean:
-	rm *.o temper
+	rm temper
 
 install:
 	echo TODO!

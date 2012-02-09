@@ -29,6 +29,7 @@
 #include <errno.h>
 #include <float.h>
 
+/*
 static int device_type(usb_dev_handle *lvr_winusb);
 
 static int usb_detach(usb_dev_handle *lvr_winusb, int iInterface);
@@ -48,6 +49,8 @@ static int interrupt_read_temperatura(usb_dev_handle *dev, float *tempC);
 static int get_data(usb_dev_handle *dev, char *buf, int len);
 
 static int get_temperature(usb_dev_handle *dev, float *tempC);
+
+*/
 
 usb_dev_handle* pcsensor_open();
 

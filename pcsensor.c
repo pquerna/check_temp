@@ -318,7 +318,10 @@ usb_dev_handle* pcsensor_open(){
 		}
 		break;
 	case 1:
-		ini_control_transfer(lvr_winusb);
+		if (ini_control_transfer(lvr_winusb) < 0) {
+			fprintf(stderr, "Failed to ini_control_transfer (device_type 1)");
+			return NULL;
+		}
       
 		control_transfer(lvr_winusb, uTemperatura );
 		interrupt_read(lvr_winusb);

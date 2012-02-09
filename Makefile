@@ -4,7 +4,7 @@ CFLAGS=-Wall
 
 all: temper
 
-temper: 
+temper: temper.c pcsensor.c pcsensor.h
 	$(CC) $(CFLAGS) temper.c pcsensor.c -o temper -lusb
 
 clean:

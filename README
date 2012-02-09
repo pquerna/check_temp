@@ -24,3 +24,21 @@ Run log.sh, you may need to run this as root depending on your udev rules, i.e.
 This will log the temperature every 5 seconds to stdout as a CSV stream which 
 you can pipe to a text stream and open in your favourite spreadsheet package 
 later. 
+
+
+To allow non-root users access
+==============================
+
+1. Add the udev rule set in /etc/udev/rules.d/ using the 60-temper.rules 
+
+2. Add a 'temper' group (using groupadd or edit the /etc/group file)
+
+3. Add users to the 'temper' group
+
+4. Reload the udev rules 
+
+    udevcontrol reload_rules
+
+5. Unplug and replug the TEMPer device
+
+

@@ -2,6 +2,6 @@
 
 while [ 1 ]
 do
-    echo `date +"%F %T"`,`./temper`
+    ./temper
     sleep 5s
 done
